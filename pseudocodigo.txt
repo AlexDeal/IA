@@ -1,0 +1,34 @@
+T =	sensa_temperatura	();			/* percibe	el	ambiente	*/
+H =	sensa_humedad (); 				/* percibe	el	ambiente	*
+P	= Presión_barométrica();    /* percibe la presion del ambiente en pascales */
+V	= Velocidad_del_viento();   /* percibe la velocidad del viento en Km/h*/
+D	= Dirección_del_viento();   /* percibe la direccion del viento */
+I	= Imagen_del_territorio_a_analizar();   /*Imagenes del territorio a analizar */
+N = Nubes /* Variable booleana que nos dice si hay nubes cerca de nuestra area*/
+
+funcion AnalizarNubes (I):
+		(a) Utilizamos un algoritmo para detectar la cantidad de nubes  en el cielo utilizando la imagen I
+		(b) Contamos la cantidad de nubes que hay en el cielo
+		(c) Devolvemos la cantidad de nubes
+
+
+
+numero_de_nubes = AnalizarNubes(I)
+
+
+If	(T<15)	and	(H	>	60) and (numero_de_nubes > 6)
+ 			If (P<101,000) and (V > 40)
+				Print ("Habrá tormenta")
+			else
+				Print	(“Lloverá”)	/* actúa	sobre	el	ambiente */
+Else
+			If	(T<15)	and	(H	< 60) and (V > 40) and (numero_de_nubes > 2 and numero_de_nubes < 6)
+				Print	(“Estará frío”) /* actúa	sobre	el	ambiente */
+			Else
+				If	(T>15)	and	(H	< 60) and (P>101,000) and (numero_de_nubes < 2)
+					Print	(“Estará soleado”) /* actúa	sobre	el	ambiente */
+Else
+			If  (V>12 and V<40)
+				Print ("El clima estará agradable")
+			Else
+			   Print	(“Estará bochornoso”) /* actúa	sobre	el	ambiente */
